@@ -1,0 +1,71 @@
+
+.o6Yscf {
+    margin: 13px 14px 0 16px;
+}
+.qyEGdc {
+    width: 100%;
+    max-width: 455px;
+    border-spacing: 0 2px;
+}
+tbody {
+    display: table-row-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+tr {
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
+}
+.qyEGdc td:first-child {
+    padding-right: 9px;
+    padding-left: 0;
+}
+.qyEGdc td:not(:last-child) {
+    border-right: 1px solid #ebebeb;
+}
+.amyZLb {
+    color: #3c4043;
+    font-size: 12px;
+}
+.ZDeom {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.dZdtsb {
+    vertical-align: top;
+}
+.QmWbpe {
+    margin-bottom: 0;
+}
+.m7B03 {
+    border-right: 2px solid rgb(0, 4, 255);
+    color: #202124;
+    font-size: 24px;
+    padding: 2px 0;
+    font-family: Roboto-Medium,Roboto,arial,sans-serif;
+}
+
+  ion-card {
+    border-right: 13px solid rgb(255, 0, 0)}
+    ion-card:nth-child(odd) { border-right: 13px solid  rgb(78, 145, 16) }
+    ion-card:nth-child(3n+1) { border-right: 13px solid rgb(0, 103, 238) }
+   
+        .column {
+          float: left;
+          padding: 10px;
+        }
+        
+        .left {
+          width: 20%;
+        }
+        
+        .right {
+          display: grid;
+          width: 80%;
+        }
+        ion-img{ padding-top: 50%;}
+        @media only screen and (min-width: 600px) {
+           ion-img{ padding-top: 20%;}
+        }

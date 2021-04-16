@@ -1,0 +1,163 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    
+    <a style="  font: icon;
+    color: #2516ff;
+    font-family: fantasy;; font-size: 22px;">COVID-19</a>
+
+</ion-toolbar >
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-searchbar showCancelButton="focus" [(ngModel)]="term" placeholder="Search.."></ion-searchbar>
+  <div class="o6Yscf">
+ 
+
+
+  <ion-grid class="qyEGdc" >
+    <ion-row>
+      <ion-col size="4" class="dZdtsb QmWbpe ZDeom">
+        <div class="amyZLb" >CASE</div>
+          <div class="m7B03" >
+            <div> <span>{{TotalConfirmed | short}}</span></div>
+          </div>
+      </ion-col>
+      <ion-col size="4" class="dZdtsb QmWbpe ZDeom">
+        <div class="amyZLb" >Recovered</div>
+        <div class="m7B03">
+          <div> <span>{{TotalRecovered | short}}</span></div>
+        </div>
+      </ion-col>
+      <ion-col size="4" class="dZdtsb QmWbpe ZDeom">
+        <div class="amyZLb" >Total deaths</div>
+        <div class="m7B03">
+          <div> <span>{{TotalDeaths | short  }}</span></div>
+        </div>
+      </ion-col>
+  
+    </ion-row>
+  </ion-grid>
+
+
+</div>
+
+<div *ngIf="!Carddata">
+  <div class="ion-padding custom-skeleton">
+    <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+    <ion-skeleton-text animated></ion-skeleton-text>
+    <ion-skeleton-text animated style="width: 88%"></ion-skeleton-text>
+    <ion-skeleton-text animated style="width: 70%"></ion-skeleton-text>
+    <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+  </div>
+
+  <ion-list>
+    <ion-list-header>
+      <ion-label>
+        <ion-skeleton-text animated style="width: 20%"></ion-skeleton-text>
+      </ion-label>
+    </ion-list-header>
+    <ion-item>
+      <ion-avatar slot="start">
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </ion-avatar>
+      <ion-label>
+        <h3>
+          <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+        </h3>
+        <p>
+          <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+        </p>
+        <p>
+          <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+        </p>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-thumbnail slot="start">
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </ion-thumbnail>
+      <ion-label>
+        <h3>
+          <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+        </h3>
+        <p>
+          <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+        </p>
+        <p>
+          <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+        </p>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-skeleton-text animated style="width: 27px; height: 27px" slot="start"></ion-skeleton-text>
+      <ion-label>
+        <h3>
+          <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+        </h3>
+        <p>
+          <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+        </p>
+        <p>
+          <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+        </p>
+      </ion-label>
+    </ion-item>
+  </ion-list>  
+</div>  
+  <ion-card   *ngFor=" let data of  Carddata | filter:term"  (click)="Savedata(data)" >
+   <div class="row">
+      <div class="column left" >
+        <div> <ion-img src=" https://www.countryflags.io/{{data.CountryCode}}/flat/64.png"></ion-img></div>
+        <p></p>
+      </div>
+      <div class="column right"   style="margin-top: 0%;">
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <div class="amyZLb" >Country</div>
+              <div  >
+                <div> <span>{{data.Country}}</span></div>
+              </div>
+            </ion-col>
+            <ion-col>
+              <div class="amyZLb" >Cases</div>
+              <div  >
+                <div> <span>{{data.TotalConfirmed | short}}</span></div>
+              </div>
+            </ion-col>
+            <ion-col>
+              <div class="amyZLb" >Deaths</div>
+              <div  >
+                <div> <span>{{data.TotalDeaths | short}}</span></div>
+              </div>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <div class="amyZLb" >Recovered</div>
+              <div  >
+                <div> <span>{{data.TotalRecovered | short}}</span></div>
+              </div>
+            </ion-col>
+            <ion-col>
+              <div class="amyZLb" >Active</div>
+              <div  >
+                <div> <span>{{data.TotalConfirmed-data.TotalRecovered-data.TotalDeaths  | short}}</span></div>
+              </div>
+            </ion-col>
+            <ion-col>
+              <div class="amyZLb" >Date</div>
+              <div  >
+                <div> <span>{{data.Date | date: 'M/d/yy, h:mm a'}}</span></div>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
+
+      </div>
+    </div>
+
+
+  </ion-card>
+</ion-content>
