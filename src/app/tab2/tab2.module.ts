@@ -8,6 +8,7 @@ import { ExploreContainerComponentModule } from '../explore-container/explore-co
 
 import { Tab2PageRoutingModule } from './tab2-routing.module';
 import { ChartsModule } from 'ng2-charts';
+import { ShortPipe } from '../pipes/short.pipe';
 
 @NgModule({
   imports: [
@@ -17,6 +18,6 @@ import { ChartsModule } from 'ng2-charts';
     ExploreContainerComponentModule,
     Tab2PageRoutingModule,ChartsModule
   ],
-  declarations: [Tab2Page]
+  declarations: [Tab2Page,ShortPipe]
 })
 export class Tab2PageModule {}

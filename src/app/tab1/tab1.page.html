@@ -1,9 +1,10 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    
-    <a style="  font: icon;
-    color: #2516ff;
-    font-family: fantasy;; font-size: 22px;">COVID-19</a>
+  <ion-toolbar color="primary">
+    <ion-title  style="color: #1e1e1e;
+    font-family: auto; ">
+      COVID-19 Dashboard
+    </ion-title>
+  
 
 </ion-toolbar >
 </ion-header>
@@ -11,7 +12,17 @@
 <ion-content [fullscreen]="true">
   <ion-searchbar showCancelButton="focus" [(ngModel)]="term" placeholder="Search.."></ion-searchbar>
   <div class="o6Yscf">
-   <ion-grid class="qyEGdc" >
+ <!--  pie chart -->
+    <canvas baseChart 
+    [datasets]="chartData" 
+    [labels]="chartLabels" 
+    [options]="chartOptions" 
+    [colors]="chartColors"
+    [legend]="showLegend" 
+    [chartType]="chartType">
+    </canvas>
+<!--  pie chart end -->
+  <ion-grid class="qyEGdc" >
     <ion-row>
       <ion-col size="4" class="dZdtsb QmWbpe ZDeom">
         <div class="amyZLb" >CASE</div>
@@ -26,7 +37,7 @@
         </div>
       </ion-col>
       <ion-col size="4" class="dZdtsb QmWbpe ZDeom">
-        <div class="amyZLb" >Total deaths</div>
+        <div class="amyZLb" >Total Deaths</div>
         <div class="m7B03">
           <div> <span>{{TotalDeaths | short  }}</span></div>
         </div>
@@ -37,7 +48,7 @@
 
 
 </div>
-
+<!-- skeleton  skeleton  skeleton   -->
 <div *ngIf="!Carddata">
   <div class="ion-padding custom-skeleton">
     <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
@@ -101,11 +112,14 @@
     </ion-item>
   </ion-list>  
 </div>  
-  <ion-card   *ngFor=" let data of  Carddata | filter:term"  (click)="Savedata(data)" >
+<!-- skeleton end -->
+
+<!--  Data country wise card -->
+  <ion-card   *ngFor=" let data of  Carddata | filter:term"  (click)="Savedata(data)"  style="background: #f6f6f6;">
    <div class="row">
       <div class="column left" >
         <div> <ion-img src=" https://www.countryflags.io/{{data.CountryCode}}/flat/64.png"></ion-img></div>
-        <p></p>
+    
       </div>
       <div class="column right"   style="margin-top: 0%;">
         <ion-grid>

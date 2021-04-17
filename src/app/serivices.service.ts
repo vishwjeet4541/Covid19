@@ -20,4 +20,13 @@ export class httpService {
       }
     ))
   }
+  Total(){
+    this.url =`${environment.apihost}world/total`;
+    return this.http.get(this.url)
+    .pipe(map(
+      data =>{
+        return data
+      }
+    ))
+  }
 }

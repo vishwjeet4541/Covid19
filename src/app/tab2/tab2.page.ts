@@ -5,11 +5,11 @@ import { AlertController } from '@ionic/angular';
 import { ChartDataSets } from 'chart.js';
 import { Color, Label } from 'ng2-charts';
 import * as moment from "moment";
-
 @Component({
   selector: 'app-tab2',
   templateUrl: 'tab2.page.html',
-  styleUrls: ['tab2.page.scss']
+  styleUrls: ['tab2.page.scss'],
+  
 })
 export class Tab2Page {
 
@@ -22,7 +22,7 @@ export class Tab2Page {
    responsive: true,
    title: {
      display: true,
-     text: 'Cases per day',
+     text: 'Coronavirus Daily Cases',
     
    },
    pan: {
@@ -30,43 +30,40 @@ export class Tab2Page {
      mode: 'xy'
    },
    zoom: {
-     enabled: true,
+     enabled: false,
      mode: 'xy'
    }
  };
  chartColors: Color[] = [
    {
     
-    backgroundColor: 'rgba(75,192,192,0.4)',
-    borderColor: 'rgba(75,192,192,1)',
-    borderCapStyle: 'butt',
-     borderDashOffset: 0.0,
-     borderJoinStyle: 'miter',
-     pointBorderColor: 'rgba(75,192,192,1)',
-     pointBackgroundColor: '#fff',
-     pointBorderWidth: 1,
-     pointHoverRadius: 5,
-     pointHoverBackgroundColor: 'rgba(75,192,192,1)',
-     pointHoverBorderColor: 'rgba(220,220,220,1)',
-     pointHoverBorderWidth: 2,
-     pointRadius: 1,
+    backgroundColor: 'rgb(0, 128, 255)',
+  
+                
    }
  ];
  chartType = 'line';
  showLegend = false;
 
- // For search
+
  stock = '';
+  skeleton: boolean;
+  interval: any;
 
  constructor(private http: HttpClient) {
-   this. getData()
+
+  this.interval = setInterval(() => {
+    this. getData() 
+}, 10000);
+
  }
 
- getData() {
+ getData() {   
+
      this.http.get(`https://api.covid19api.com/summary`).subscribe(res => {
        console.log(res['Countries'])
      const history = res['Countries'];
-  
+       
      this.chartLabels = [];
      this.chartData[0].data = [];
     
@@ -77,15 +74,12 @@ export class Tab2Page {
     }
      for (let entry of history) {
 
-        
-        this.chartData[0].data.push(entry.NewConfirmed);
+      this.skeleton = true
+        this.chartData[0].data.push(entry.NewConfirmed );
      }
    });
  }
 
- typeChanged(e) {
-   const on = e.detail.checked;
-   this.chartType = on ? 'line' : 'bar';
- }
+
    
 }

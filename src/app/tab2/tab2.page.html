@@ -1,22 +1,48 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-title>
-      Tab 2
+      Daily Cases (worldwide)
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-item>
-  </ion-item>
- 
+<!--   line chart start -->
+ <div style="padding-top: 32%;"   *ngIf="skeleton">
   <canvas baseChart 
-  [datasets]="chartData" 
-  [labels]="chartLabels" 
+  [datasets]="chartData  " 
+  [labels]="chartLabels  " 
   [options]="chartOptions" 
   [colors]="chartColors"
-  [legend]="showLegend" 
+  [legend]="showLegend " 
   [chartType]="chartType">
   </canvas>
+  <!--  chart end -->
+</div>
+<ion-item *ngIf="!skeleton"   style="padding-top: 32%;" >
+  <ion-thumbnail slot="start">
+    <ion-skeleton-text animated  animated style="width: 27px; height: 27px" ></ion-skeleton-text>
+  </ion-thumbnail>
+  <ion-label>
+    <h3>
+      <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+    </h3>
+    <p>
+      <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+    </p>
+    <p>
+      <ion-skeleton-text animated style="width: 60%; "></ion-skeleton-text>
+    </p>
+    <h3>
+      <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+    </h3>
+    <p>
+      <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+    </p>
+    <p>
+      <ion-skeleton-text animated style="width: 60%; "></ion-skeleton-text>
+    </p>
+  </ion-label>
+</ion-item>
 
 </ion-content>
